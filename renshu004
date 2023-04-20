@@ -1,0 +1,34 @@
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Scanner;
+
+public class ren002 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your birth year (YYYY): ");
+        int year = scanner.nextInt();
+        System.out.print("Enter your birth month (MM): ");
+        int month = scanner.nextInt();
+        System.out.print("Enter your birth day (DD): ");
+        int day = scanner.nextInt();
+
+        LocalDate birthDate = LocalDate.of(year, month, day);
+        LocalDate currentDate = LocalDate.now();
+        Period period = Period.between(birthDate, currentDate);
+        int age = period.getYears();
+
+        String[] fortunes = {
+                "あなたの今日の運勢は大吉です。",
+                "あなたの今日の運勢は中吉です。",
+                "あなたの今日の運勢は小吉です。",
+                "あなたの今日の運勢は吉です。",
+                "あなたの今日の運勢は末吉です。",
+                "あなたの今日の運勢は凶です。",
+                "あなたの今日の運勢は大凶です。"
+        };
+        int fortuneIndex = (int) (Math.random() * fortunes.length);
+
+        System.out.println("あなたは " + age + " 歳です。");
+        System.out.println(fortunes[fortuneIndex]);
+    }
+}
